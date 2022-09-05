@@ -1,0 +1,74 @@
+<%= search_form_for @q do |f| %>
+<div class="container">
+  <div class="row mt-3"></div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.select :role_cont, options_for_select(@roles, @selected_role),{}, {  style: "width: 150px; height: 30px;", onchange: "document.getElementById('user_search').submit();" } %>
+    </div>
+    <div class="col-md-6 d-flex flex-row-reverse">
+      <%= f.search_field :first_name_or_last_name_or_middle_name_or_email_or_student_id_cont, placeholder: ' Search' %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="container">
+  <div class="row mt-5"></div>
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Roles</th>
+        <th scope="col">Student ID</th>
+        <th scope="col">Employee ID</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Middle Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Confirmed?</th>
+        <th scope="col"><%= sort_link(@q, :approved, 'Status', default_order: :desc, :style => "text-decoration: none; color: white") %></th>
+        <% if current_user.role == 'admin' %>
+          <th scope="col">Authenticate</th>
+          <th scope="col"></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+        <div id="users">
+          <% @users.each do |user| %>
+            <%= render user %>
+          <tr>
+            <th scope="row"><%= user.role.to_s.capitalize %></th>
+            <td><%= user.student_id %></td>
+            <td><%= user.employee_id %></td>
+            <td><%= user.last_name.to_s.capitalize %></td>
+            <td><%= user.first_name.to_s.capitalize %></td>
+            <td><%= user.middle_name.to_s.capitalize %></td>
+            <td><%= link_to user.email, user %></td>
+            <td><%= link_to user.confirmed?, user %></td>
+
+            <% if user.approved %></td>
+              <td class="text-success">Approved</td>
+            <% else %>
+              <td class="text-danger">Pending</td>
+            <% end %>
+
+            <% if current_user.role == 'admin' %>
+              <% if user.approved %> 
+                <td>
+                  <%=
+                  link_to "Decline", decline_path(user), :class => "btn btn-danger btn-sm", :style => "width: 100px" 
+                  %>
+                </td>
+              <% else %>
+                <td><%= link_to "Approve", approve_path(user), :class => "btn btn-primary btn-sm", :style => "width: 100px" %></td>
+              <% end %>
+
+            <td><%= link_to "#{user.rejected? ? 'unreject' : 'reject' }", reject_path(user), :class => "btn btn-#{user.rejected? ? 'info' : 'danger' } btn-sm", :style => "width: 100px" %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </div>
+    </tbody>
+  </table>
+</div>

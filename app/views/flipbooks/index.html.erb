@@ -1,0 +1,356 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <li class="nav-item">
+            <ul class="nav nav-pills flex-column pt-2" style="position: fixed;">
+              <h5 class="pt-2"><%= current_user.first_name.to_s.capitalize %>  <%= current_user.middle_name.to_s.capitalize %> <%= current_user.last_name.to_s.capitalize %></h5>
+              <h6 class="pt-2" style="color: #343333;"><%= current_user.student_id %></h6>
+              <hr>
+              <li class="nav-item" style="width: auto;">
+                <a href="#First-Year" class="nav-link link-dark" aria-current="page">
+                  <svg class="bi me-2" width="0" height="16"><use xlink:href="#home"></use></svg>
+                  First Year
+                </a>
+              </li>
+              <li>
+                <a href="#Second-Year" class="nav-link link-dark">
+                  <svg class="bi me-2" width="0" height="16"><use xlink:href="#Second-Year"></use></svg>
+                  Second Year
+                </a>
+              </li>
+              <li>
+                <a href="#Third-Year" class="nav-link link-dark">
+                  <svg class="bi me-2" width="0" height="16"><use xlink:href="#Third-Year"></use></svg>
+                  Third Year
+                </a>
+              </li>
+              <li>
+                <a href="#Fourth-Year" class="nav-link link-dark">
+                  <svg class="bi me-2" width="0" height="16"><use xlink:href="#Fourth-Year"></use></svg>
+                  Fourth Year
+                </a>
+              </li>
+              <li>
+                <a href="#P-E-Elective" class="nav-link link-dark">
+                  <svg class="bi me-2" width="0" height="16"><use xlink:href="#P-E-Elective"></use></svg>
+                  Professional Elective Courses
+                </a>
+              </li>
+              <li>
+                <a href="#IT-Elective" class="nav-link link-dark">
+                  <svg class="bi me-2" width="0" height="16"><use xlink:href="#IT-Elective"></use></svg>
+                  IT Elective Courses
+                </a>
+              </li>
+              <li>
+                <a href="#Track-1" class="nav-link link-dark">
+                  <svg class="bi me-2" width="6" height="16"><use xlink:href="#Track-1"></use></svg>
+                  Track 1
+                </a>
+              </li>
+              <li>
+                <a href="#Track-2" class="nav-link link-dark">
+                  <svg class="bi me-2" width="6" height="16"><use xlink:href="#Track-2"></use></svg>
+                  Track 2
+                </a>
+              </li>
+              <li>
+                <a href="#Track-3" class="nav-link link-dark">
+                  <svg class="bi me-2" width="6" height="16"><use xlink:href="#Track-3"></use></svg>
+                  Track 3
+                </a>
+              </li>
+            </ul>
+            <hr>
+
+          </div>
+        </div>
+
+
+
+
+    <div class="col-auto col-md-9 col-xl-10 px-sm-10 px-0" style="position: relative; left: 20px; width: 67%;">
+      <div class="container-fluid">
+        <div class="row mt-3"></div>
+        <a class="anchor" id="First-Year"></a>
+        <h1>1st Year</h1>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_1.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%;="box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="Second-Year"></a>
+        <h1>2nd Year</h1>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_2.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%;="box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="Third-Year"></a>
+        <h1>3rd Year</h1>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_3.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%;="box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="Fourth-Year"></a>
+        <h1>4th Year</h1>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_4.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%;="box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="P-E-Elective"></a>
+        <h1>Professional Elective Courses</h1>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_5.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%;="box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="IT-Elective"></a>
+        <h1>IT Elective Courses</h1>
+        <hr>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="Track-1"></a>
+        <h2>Track 1: Animation And Mobile App Development</h2>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_6.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%; box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="Track-2"></a>
+        <h2>Track 2: Cyber Security</h2>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_7.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%; box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5"></div>
+        <a class="anchor" id="Track-3"></a>
+        <h2>Track 3: Digital Arts And Design</h2>
+        <hr>
+        <div class="row row-cols-4">
+          <% @flipbooks_8.each do |batch| %>
+          <% batch.each do |flipbook| %>
+          <div class="col">
+            <%= link_to flipbook_path(flipbook) do  %>
+              <div class="card" style="margin-bottom: 10%; box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;">
+              <img src="<%= flipbook.thumbnail.presence || 'https://via.placeholder.com/400x585' %>" class="card-img-top" alt="<%= flipbook.subtitle %>">
+            <% end %>
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <%= flipbook.title %><br>
+                  </h6>
+                  <small class="card-text text-muted"><%= flipbook.subtitle %></small>
+                  <% if current_user.role == 'admin' || current_user.role == 'faculty'%>
+                  <div class="pt-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <%= link_to "Edit",   edit_flipbook_path(flipbook), :class => "btn btn-outline-primary btn-sm"  %>
+                      <%= button_to "Delete", flipbook_path(flipbook), method: :delete, :class => "btn btn-outline-danger btn-sm" %>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

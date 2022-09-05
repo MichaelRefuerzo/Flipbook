@@ -13,3 +13,197 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap/scss/bootstrap";
+
+.card-body {
+  height: auto;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+
+label {
+  margin-bottom: 10px;
+}
+
+.text-white {
+  text-decoration: none;
+}
+
+.errors {
+  font-size: 15px;
+  margin-top: 30px;
+  color: rgb(255, 130, 130);
+}
+
+.alert-flipbook {
+  text-decoration: none;
+  margin-bottom: 5px;
+  font-size: 15px;
+  text-align: center;
+  color: rgb(241, 121, 121);
+}
+
+.alert-flipbook-2 {
+  text-decoration: none;
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: rgb(241, 121, 121);
+}
+
+.show-user {
+  border: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.flippy {
+  width: 8em;
+}
+
+.flippy span:last-child {
+  display: none;
+  transition: display 2s;
+}
+
+.flipbooks {
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+.flipbook-info {
+  margin: 20px;
+}
+
+.flipbook-button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flipbook-menu {
+  /*card border-0 rounded position-fixed*/
+  position: fixed;
+  min-width:230px;
+  margin: 20px;
+}
+
+
+.card-img-top {
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tip-logo {
+  width: 50px;
+  height: 50px;
+  background-image: url(/assets/tip.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.cite-logo {
+  position: relative;
+  height: auto;
+  width: 350px;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+.font-questrial {
+  font-family: Questrial,sans-serif;
+  font-size: 12px;
+  color: #696969;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center; /** Y-axis align **/
+  justify-content: center;
+}
+
+
+.ant-row-flex {
+  display: flex;
+}
+
+.cite-background{
+  background-image: url('assets/CITE-BG.png');
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 60px;
+  /*width: 100%;*/
+  /*height: 100%;*/
+  /*position: relative;*/
+  /*display: flex;*/
+  /*min-height: 100vh;*/
+  /*flex-direction: column;*/
+  /*justify-content: space-between;*/
+  /*background-image: url('assets/CITE-BG.png');*/
+}
+
+html, body {
+  height:100vh;
+}
+
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -80px;
+  visibility: hidden;
+}
+
+.flipbook-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-flipbook {
+  margin: 20px;
+}
+
+.add-flipbook-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.nav-link:hover{
+    background-color:#C0C0C0 !important;
+}
+
+.flipbook-container-test {
+  display: flex;
+  align-items: stretch;
+}
+
+.container-no-padding {
+  height: auto;
+  width: 69%;
+  padding-left: 5%;
+  padding-right: 0%;
+}

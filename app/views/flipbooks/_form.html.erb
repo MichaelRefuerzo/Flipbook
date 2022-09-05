@@ -1,0 +1,61 @@
+<%= form_with(model: flipbook) do |form| %>
+<% if flipbook.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(flipbook.errors.count, "error") %> prohibited this flipbook from being saved:</h2>
+
+  <ul>
+    <% flipbook.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
+<form>
+
+  <div class="form-group">
+    <label>Course Title</label>
+    <%= form.text_field :title, :class => "form-control", :placeholder => "Title" %>
+  </div>
+
+  <div class="actions mt-4">
+    <label>Course Code</label>
+    <%= form.text_field :subtitle, :class => "form-control", :placeholder => "Course Code" %>
+  </div>
+
+  <div class="actions mt-4">
+    <label>Year Level</label>
+    <%= form.select :year_level, options_for_select([
+      "1st Year", 
+      "2nd Year", 
+      "3rd Year", 
+      "4th Year",
+      "Professional Elective Courses",
+      "Track 1: Animation And Mobile App Development",
+      "Track 2: Cyber Security",
+      "Track 3: Digital Arts And Design"]), 
+      {}, { class: "form form-control" } %>
+    </div>
+
+    <div class="actions mt-4">
+      <label>Thumbnail</label>
+      <%= form.text_field :thumbnail, :class => "form-control", :placeholder => "Thumbnail" %>
+    </div>
+
+
+    <div class="actions mt-4 mb-4">
+      <label>Uniform Resource Locators (URL)</label>
+      <%= form.text_field :url, :class => "form-control", :placeholder => "Uniform Resource Locators (URL)" %>
+    </div>
+
+    <div class="add-flipbook-button">
+      <%= form.submit "Submit", :class => "btn btn-primary btn-sm mt-2" %>
+      <%= link_to "Show this flipbook", @flipbook, :class => "btn btn-outline-primary btn-sm mt-2" %>
+      <%= link_to "Back to Flipbooks", flipbooks_path, :class => "btn btn-outline-primary btn-sm mt-2" %>
+    </div>
+
+  </form>
+
+  <% end %>

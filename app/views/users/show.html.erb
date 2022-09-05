@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row mt-5"></div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Roles</th>
+        <th scope="col">Employee ID</th>
+        <th scope="col">Student ID</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Middle Name</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <div id="users">
+        <tr>
+          <th scope="row"><%= @user.role.to_s.capitalize %></th>
+          <td><%= @user.employee_id %></td>
+          <td><%= @user.student_id %></td>
+          <td><%= @user.last_name.to_s.capitalize %></td>
+          <td><%= @user.first_name.to_s.capitalize %></td>
+          <td><%= @user.middle_name.to_s.capitalize %></td>
+          <td><%= @user.email %></td>
+        </tr>
+      </div>
+    </tbody>
+  </table>
+
+  <div class="container">
+    <div class="row"></div>
+    <div class="show-user">
+      <%= link_to "Edit this user", edit_user_path(@user), :class => "btn btn-primary" %> 
+      <%= link_to "Back to Admin", users_path, :class => "btn btn-outline-primary" %>
+    </div>
+  </div>
+</div>
+
+<%= render @user %>

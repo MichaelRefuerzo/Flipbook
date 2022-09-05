@@ -1,0 +1,92 @@
+<%= form_with(model: user) do |form| %>
+<% if user.errors.any? %>
+<% end %>
+
+
+<form>
+
+  <div class="form-group">
+    <label>Employee ID</label>
+    <div class="field">
+      <%= form.number_field :employee_id, autofocus: true, :class => "form-control", :placeholder => "Employee ID" %>
+    </div>
+  </div> 
+
+  <div class="form-group">
+    <label>Student ID</label>
+    <div class="field">
+      <%= form.text_field :student_id, autofocus: true, :class => "form-control", :placeholder => "Student ID" %>
+    </div>
+  </div>   
+
+  <div class="form-group">
+    <label>First Name</label>
+    <div class="field">
+      <%= form.text_field :first_name, autofocus: true, :class => "form-control", :placeholder => "First Name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Middle Name</label>
+    <div class="field">
+      <%= form.text_field :middle_name, autofocus: true, :class => "form-control", :placeholder => "Middle Name"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Last Name</label>
+    <div class="field">
+      <%= form.text_field :last_name, autofocus: true, :class => "form-control", :placeholder => "Last Name" %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label>Email address</label>
+    <%= form.text_field :email, :class => "form-control", :placeholder => "Enter Email" %>
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <div class="field">
+      <%= form.password_field :password, autocomplete: "new-password", :class => "form-control", :placeholder => "Password" %>
+    </div>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <div class="field">
+      <%= form.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control", :placeholder => "Confirm Password" %>
+    </div>
+  </div>
+
+  <% if current_user.role == 'admin' %>
+  <div class="actions mt-4">
+    <label>Roles</label>
+    <%= form.select :role, options_for_select([
+      "admin", 
+      "faculty", 
+      "student"]), 
+      {}, { class: "form form-control" } %>
+    </div>
+  <% end %>
+
+    <div class="alert-flipbook-2 ms-2">
+      <% user.errors.each do |error| %>
+      <br>
+      • <%= error.full_message %>
+      <% end %>
+    </div>
+
+    <div class="add-flipbook-button">
+      <%= form.submit "Submit", :class => "btn btn-primary mt-2" %>
+      <%= link_to "Back to Admin", users_path, :class => "btn btn-outline-primary mt-2" %>
+    </div>
+
+  </form>
+
+
+  <% end %>
