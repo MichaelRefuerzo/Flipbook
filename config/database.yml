@@ -81,6 +81,5 @@ test:
 #
 production:
   <<: *default
-  database: flipbook_production
-  username: flipbook
-  password: <%= ENV["FLIPBOOK_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  
